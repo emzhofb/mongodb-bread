@@ -1,13 +1,14 @@
-const mongo = require('../models/data').getDb;
+const col = require('../models/data');
 
 exports.getIndex = (req, res, next) => {
-  mongo
-    .collection('bread')
-    .find({})
-    .toArray()
-    .then(result => {
-      res.render('index', { title: 'Express' });
-      console.log(result);
-    })
-    .catch(err => console.log(err));
+  let data;
+
+  col.find({}).toArray((err, docs) => {
+    if (err) console.log(err);
+
+    data = docs;
+    console.log(data);
+  });
+
+  res.render('index', { title: 'Express' });
 };
