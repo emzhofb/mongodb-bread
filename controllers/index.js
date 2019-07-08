@@ -2,12 +2,15 @@ const getDb = require('../models/data').getDb;
 
 exports.getIndex = (req, res, next) => {
   const db = getDb();
+  let data;
 
   db.collection('bread')
     .find({})
     .toArray()
-    .then(result => console.log(result))
+    .then(result => {
+      data = result;
+      
+      res.render('index', { title: 'Express', data });
+    })
     .catch(err => console.log(err));
-
-  res.render('index', { title: 'Express' });
 };
