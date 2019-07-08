@@ -6,8 +6,8 @@ exports.getAdd = (req, res, next) => {
 
 exports.postAdd = (req, res, next) => {
   const string = req.body.string || 'kosong';
-  const integer = req.body.integer || 'kosong';
-  const float = req.body.float || 'kosong';
+  const integer = req.body.integer || 0;
+  const float = req.body.float || 0;
   const date = req.body.date || 'kosong';
   const boolean = req.body.boolean || 'true';
   let displayDate;
